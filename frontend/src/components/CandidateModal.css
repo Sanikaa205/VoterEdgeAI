@@ -1,0 +1,378 @@
+/* Candidate Modal Styles */
+
+.candidate-modal-wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.modal-panel {
+  position: relative;
+  background: white;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Close Button */
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #6B7280;
+  cursor: pointer;
+  padding: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: #F3F4F6;
+  color: #111928;
+}
+
+.modal-close-btn:focus-visible {
+  outline: 2px solid #1A56DB;
+  outline-offset: 2px;
+}
+
+/* Modal Content */
+.modal-content {
+  padding: 32px;
+  max-height: calc(90vh - 64px);
+  overflow-y: auto;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.modal-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111928;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+
+.modal-party-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* Modal Information Grid */
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  background: #F9FAFB;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111928;
+}
+
+/* Modal Sections */
+.modal-section {
+  margin-bottom: 24px;
+}
+
+.section-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111928;
+  margin: 0 0 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-heading.warning {
+  color: #D97706;
+}
+
+.section-content {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Issues List */
+.issues-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.issue-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+  padding: 8px 0;
+}
+
+.issue-item::before {
+  content: '✓';
+  flex-shrink: 0;
+  color: #0E9F6E;
+  font-weight: bold;
+  margin-top: 2px;
+}
+
+/* Criminal Section */
+.criminal-section {
+  background: #FEF2F2;
+  border: 1px solid #FECDD3;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.criminal-section .section-content {
+  color: #7F1D1D;
+}
+
+/* Modal Disclaimer */
+.modal-disclaimer {
+  background: #EBF5FB;
+  border: 1px solid #BFDBFE;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  font-size: 13px;
+  color: #1E40AF;
+  line-height: 1.5;
+}
+
+.modal-disclaimer p {
+  margin: 0;
+}
+
+.modal-disclaimer strong {
+  font-weight: 600;
+}
+
+/* Modal Action Button */
+.modal-action-btn {
+  width: 100%;
+  padding: 12px 24px;
+  background: #1A56DB;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-action-btn:hover {
+  background: #1E40AF;
+}
+
+.modal-action-btn:active {
+  transform: scale(0.98);
+}
+
+.modal-action-btn:focus-visible {
+  outline: 2px solid #1A56DB;
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+.modal-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-panel::-webkit-scrollbar-track {
+  background: #F3F4F6;
+  border-radius: 4px;
+}
+
+.modal-panel::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 4px;
+}
+
+.modal-panel::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-panel {
+    max-width: 100%;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .modal-content {
+    padding: 24px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+
+  .modal-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .section-heading {
+    font-size: 15px;
+  }
+
+  .section-content {
+    font-size: 13px;
+  }
+
+  .issue-item {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 8px;
+  }
+
+  .modal-panel {
+    max-height: 95vh;
+    border-radius: 12px;
+  }
+
+  .modal-content {
+    padding: 16px;
+  }
+
+  .modal-close-btn {
+    top: 12px;
+    right: 12px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+
+  .modal-header {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+  }
+
+  .section-heading {
+    font-size: 14px;
+  }
+
+  .modal-info-grid {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .info-value {
+    font-size: 14px;
+  }
+
+  .section-content {
+    font-size: 13px;
+  }
+
+  .modal-disclaimer {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .modal-action-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}

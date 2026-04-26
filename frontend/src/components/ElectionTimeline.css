@@ -1,0 +1,340 @@
+/* Election Timeline Component Styles */
+
+.election-timeline {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid #E5E7EB;
+}
+
+.election-timeline .section-header {
+  margin-bottom: 32px;
+}
+
+.election-timeline .section-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111928;
+  margin: 0 0 8px 0;
+}
+
+.election-timeline .section-header p {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Error Message */
+.election-timeline .error-message {
+  padding: 16px;
+  background: #FEE2E2;
+  border: 1px solid #FCA5A5;
+  border-radius: 8px;
+  color: #991B1B;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+  background: #F9FAFB;
+  border-radius: 8px;
+  border: 1px dashed #D1D5DB;
+  color: #6B7280;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  gap: 16px;
+  color: #6B7280;
+}
+
+.loading-state svg {
+  color: #1A56DB;
+}
+
+.loading-state p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Timeline Container */
+.timeline-container {
+  position: relative;
+  padding: 16px 0;
+}
+
+/* Timeline Event */
+.timeline-event {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.timeline-event.current {
+  opacity: 1;
+}
+
+.timeline-event.completed {
+  opacity: 0.7;
+}
+
+.timeline-event:hover {
+  opacity: 1;
+}
+
+/* Timeline Marker */
+.timeline-marker {
+  position: relative;
+  flex-shrink: 0;
+  width: 56px;
+  padding-top: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 3px solid white;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-event.completed .timeline-dot {
+  background: #0E9F6E;
+  border-color: white;
+}
+
+.timeline-event.current .timeline-dot {
+  background: #1A56DB;
+  border-color: white;
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 0 0 4px rgba(26, 86, 219, 0.15);
+}
+
+.timeline-event.upcoming .timeline-dot {
+  background: #D1D5DB;
+  border-color: white;
+}
+
+/* Timeline Line */
+.timeline-line {
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  flex: 1;
+  height: calc(100% - 28px);
+  background: #E5E7EB;
+  z-index: 1;
+}
+
+.timeline-event:last-child .timeline-line {
+  display: none;
+}
+
+.timeline-event.completed .timeline-line {
+  background: #0E9F6E;
+}
+
+.timeline-event.current .timeline-line {
+  background: #1A56DB;
+}
+
+/* Event Content */
+.event-content {
+  flex: 1;
+  padding-top: 2px;
+}
+
+.event-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.event-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 80px;
+}
+
+.event-label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111928;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.timeline-event.current .event-label {
+  color: #1A56DB;
+}
+
+.timeline-event.completed .event-label {
+  color: #0E9F6E;
+}
+
+.event-description {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 6px 0 0 0;
+  line-height: 1.5;
+}
+
+.timeline-event.current .event-description {
+  color: #374151;
+}
+
+/* Current Badge */
+.current-badge {
+  display: inline-block;
+  background: #EBF5FB;
+  color: #1A56DB;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-top: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .election-timeline {
+    padding: 24px;
+  }
+
+  .timeline-marker {
+    width: 48px;
+    gap: 12px;
+  }
+
+  .timeline-event {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .event-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .event-date {
+    font-size: 11px;
+    min-width: auto;
+  }
+
+  .event-label {
+    font-size: 15px;
+  }
+
+  .event-description {
+    font-size: 13px;
+  }
+
+  .election-timeline .section-header h2 {
+    font-size: 20px;
+  }
+
+  .election-timeline .section-header p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .election-timeline {
+    padding: 16px;
+  }
+
+  .timeline-marker {
+    width: 40px;
+    padding-top: 2px;
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+
+  .timeline-event.current .timeline-dot {
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
+  }
+
+  .timeline-marker {
+    gap: 8px;
+  }
+
+  .timeline-line {
+    top: 24px;
+  }
+
+  .timeline-event {
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .event-header {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .event-date {
+    font-size: 10px;
+  }
+
+  .event-label {
+    font-size: 14px;
+  }
+
+  .event-description {
+    font-size: 12px;
+  }
+
+  .current-badge {
+    font-size: 10px;
+    padding: 3px 10px;
+  }
+
+  .empty-state {
+    padding: 32px 16px;
+    font-size: 14px;
+  }
+
+  .loading-state {
+    padding: 40px 16px;
+  }
+
+  .loading-state svg {
+    width: 24px;
+    height: 24px;
+  }
+}
