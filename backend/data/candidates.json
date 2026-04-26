@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "name": "Rajesh Verma",
+    "party": "National Democratic Party",
+    "state": "Maharashtra",
+    "education": "B.Tech (IIT Delhi), MBA (Harvard)",
+    "issues": ["Education Reform", "Healthcare", "Infrastructure Development"],
+    "criminalRecords": false,
+    "bio": "Experienced administrator with 15 years in public service"
+  },
+  {
+    "id": 2,
+    "name": "Priya Sharma",
+    "party": "Progressive Alliance",
+    "state": "Maharashtra",
+    "education": "LL.B (Delhi University), M.A (Political Science)",
+    "issues": ["Women Empowerment", "Climate Action", "Rural Development"],
+    "criminalRecords": false,
+    "bio": "Social activist and human rights advocate"
+  },
+  {
+    "id": 3,
+    "name": "Amit Patel",
+    "party": "Economic Party",
+    "state": "Gujarat",
+    "education": "B.Com (NMIMS), CA (Chartered Accountant)",
+    "issues": ["Economic Growth", "Business Development", "Tax Reform"],
+    "criminalRecords": false,
+    "bio": "Business entrepreneur with 20 years of experience"
+  },
+  {
+    "id": 4,
+    "name": "Meera Reddy",
+    "party": "National Democratic Party",
+    "state": "Karnataka",
+    "education": "M.D (Medicine), Public Health Certification",
+    "issues": ["Healthcare Access", "Sanitation", "Nutrition"],
+    "criminalRecords": false,
+    "bio": "Medical professional dedicated to healthcare reform"
+  },
+  {
+    "id": 5,
+    "name": "Vikram Singh",
+    "party": "Progressive Alliance",
+    "state": "Gujarat",
+    "education": "B.A (History), M.A (Political Science)",
+    "issues": ["Historical Preservation", "Cultural Heritage", "Education"],
+    "criminalRecords": false,
+    "bio": "Historian and cultural ambassador"
+  },
+  {
+    "id": 6,
+    "name": "Sneha Gupta",
+    "party": "Economic Party",
+    "state": "Maharashtra",
+    "education": "B.Tech (Computer Science), MBA (IIM)",
+    "issues": ["Digital Transformation", "Startups", "Innovation"],
+    "criminalRecords": false,
+    "bio": "Tech entrepreneur focusing on digital India"
+  },
+  {
+    "id": 7,
+    "name": "Harish Kumar",
+    "party": "National Democratic Party",
+    "state": "Karnataka",
+    "education": "B.Sc (Agriculture), M.Sc (Soil Science)",
+    "issues": ["Agriculture", "Farmer Welfare", "Irrigation"],
+    "criminalRecords": false,
+    "bio": "Agricultural scientist and farmer advocate"
+  },
+  {
+    "id": 8,
+    "name": "Ananya Desai",
+    "party": "Progressive Alliance",
+    "state": "Karnataka",
+    "education": "B.A (Economics), M.A (Development Studies)",
+    "issues": ["Poverty Alleviation", "Social Welfare", "Education"],
+    "criminalRecords": false,
+    "bio": "Social economist working on inclusive growth"
+  },
+  {
+    "id": 9,
+    "name": "Suresh Nair",
+    "party": "Economic Party",
+    "state": "Gujarat",
+    "education": "B.Sc (Civil Engineering), M.Tech",
+    "issues": ["Infrastructure", "Urban Development", "Transportation"],
+    "criminalRecords": false,
+    "bio": "Infrastructure specialist with 18 years experience"
+  },
+  {
+    "id": 10,
+    "name": "Zara Khan",
+    "party": "National Democratic Party",
+    "state": "Maharashtra",
+    "education": "LL.M (Constitutional Law), M.A (Philosophy)",
+    "issues": ["Constitutional Rights", "Justice System", "Minority Welfare"],
+    "criminalRecords": false,
+    "bio": "Constitutional lawyer dedicated to civil rights"
+  }
+]

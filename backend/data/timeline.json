@@ -1,0 +1,124 @@
+{
+  "states": [
+    {
+      "state": "Maharashtra",
+      "timeline": [
+        {
+          "date": "2026-04-15",
+          "label": "Voter Registration Deadline",
+          "description": "Last date to register as a voter for Maharashtra elections"
+        },
+        {
+          "date": "2026-05-01",
+          "label": "Candidate Registration Opens",
+          "description": "Candidates can begin filing nomination forms"
+        },
+        {
+          "date": "2026-05-15",
+          "label": "Candidate Registration Closes",
+          "description": "Deadline for candidates to submit nomination forms"
+        },
+        {
+          "date": "2026-05-20",
+          "label": "Campaign Period Begins",
+          "description": "Official election campaign starts across all constituencies"
+        },
+        {
+          "date": "2026-06-10",
+          "label": "Campaign Period Ends",
+          "description": "Election campaign concludes 48 hours before voting"
+        },
+        {
+          "date": "2026-06-12",
+          "label": "Election Day",
+          "description": "Polling stations open from 7 AM to 6 PM"
+        },
+        {
+          "date": "2026-06-13",
+          "label": "Vote Counting",
+          "description": "Official counting of votes begins"
+        }
+      ]
+    },
+    {
+      "state": "Gujarat",
+      "timeline": [
+        {
+          "date": "2026-04-20",
+          "label": "Voter Registration Deadline",
+          "description": "Last date to register as a voter for Gujarat elections"
+        },
+        {
+          "date": "2026-05-05",
+          "label": "Candidate Registration Opens",
+          "description": "Candidates can begin filing nomination forms"
+        },
+        {
+          "date": "2026-05-18",
+          "label": "Candidate Registration Closes",
+          "description": "Deadline for candidates to submit nomination forms"
+        },
+        {
+          "date": "2026-05-25",
+          "label": "Campaign Period Begins",
+          "description": "Official election campaign starts across all constituencies"
+        },
+        {
+          "date": "2026-06-08",
+          "label": "Campaign Period Ends",
+          "description": "Election campaign concludes 48 hours before voting"
+        },
+        {
+          "date": "2026-06-10",
+          "label": "Election Day",
+          "description": "Polling stations open from 7 AM to 6 PM"
+        },
+        {
+          "date": "2026-06-11",
+          "label": "Vote Counting",
+          "description": "Official counting of votes begins"
+        }
+      ]
+    },
+    {
+      "state": "Karnataka",
+      "timeline": [
+        {
+          "date": "2026-04-25",
+          "label": "Voter Registration Deadline",
+          "description": "Last date to register as a voter for Karnataka elections"
+        },
+        {
+          "date": "2026-05-10",
+          "label": "Candidate Registration Opens",
+          "description": "Candidates can begin filing nomination forms"
+        },
+        {
+          "date": "2026-05-20",
+          "label": "Candidate Registration Closes",
+          "description": "Deadline for candidates to submit nomination forms"
+        },
+        {
+          "date": "2026-05-28",
+          "label": "Campaign Period Begins",
+          "description": "Official election campaign starts across all constituencies"
+        },
+        {
+          "date": "2026-06-12",
+          "label": "Campaign Period Ends",
+          "description": "Election campaign concludes 48 hours before voting"
+        },
+        {
+          "date": "2026-06-14",
+          "label": "Election Day",
+          "description": "Polling stations open from 7 AM to 6 PM"
+        },
+        {
+          "date": "2026-06-15",
+          "label": "Vote Counting",
+          "description": "Official counting of votes begins"
+        }
+      ]
+    }
+  ]
+}
