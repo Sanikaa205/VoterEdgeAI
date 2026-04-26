@@ -1,0 +1,153 @@
+/* ========================================
+   Global App Styles
+   ======================================== */
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Page Content Styling */
+.page-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.page-header h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111928;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.3px;
+}
+
+.page-header p {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Desktop: hide menu button */
+@media (min-width: 769px) {
+  .app-header .menu-btn {
+    display: none !important;
+  }
+}
+
+/* Loading States */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #6B7280;
+  font-size: 16px;
+}
+
+/* Error States */
+.error-container {
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 10px;
+  padding: 16px;
+  color: #991B1B;
+  margin-bottom: 16px;
+}
+
+.error-message {
+  background-color: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: #991B1B;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* Empty States */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  gap: 12px;
+}
+
+.empty-state svg {
+  width: 56px;
+  height: 56px;
+  opacity: 0.35;
+  color: #6B7280;
+}
+
+.empty-state h2,
+.empty-state h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.empty-state p {
+  font-size: 14px;
+  color: #6B7280;
+  margin: 0;
+}
+
+/* Utility Card */
+.card {
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #D1D5DB;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, #1A56DB 0%, #1E40AF 100%);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 14px rgba(26, 86, 219, 0.3);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-section {
+    padding: 0 16px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+  }
+}
