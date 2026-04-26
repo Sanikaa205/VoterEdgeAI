@@ -1,0 +1,34 @@
+/* My Journey Page Styles */
+
+.journey-section {
+  margin-bottom: 32px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.journey-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .journey-section {
+    margin-bottom: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .journey-section {
+    margin-bottom: 20px;
+  }
+}
