@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Loader } from 'lucide-react'
 import './ElectionTimeline.css'
 
-const ElectionTimeline = ({ state }) => {
+const ElectionTimeline = ({ state, user }) => {
+  // If the user is not authenticated, don't show empty placeholders.
+  if (!user) return null
   const [timeline, setTimeline] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
