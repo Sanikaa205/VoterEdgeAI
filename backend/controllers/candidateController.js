@@ -49,12 +49,8 @@ export const getAllCandidates = (req, res) => {
       );
     }
 
-    res.status(200).json({
-      success: true,
-      message: 'Candidates retrieved successfully',
-      count: candidates.length,
-      data: candidates || []
-    });
+    // Return raw array for compatibility with tests
+    res.status(200).json(candidates || []);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -95,11 +91,8 @@ export const getCandidateById = (req, res) => {
       });
     }
 
-    res.status(200).json({
-      success: true,
-      message: 'Candidate retrieved successfully',
-      data: candidate
-    });
+    // Return raw candidate object for compatibility with tests
+    res.status(200).json(candidate);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -118,19 +111,8 @@ export const getCandidatesByState = (req, res) => {
       c => c.state.toLowerCase() === state.toLowerCase()
     );
     
-    if (filteredCandidates.length === 0) {
-      return res.status(404).json({
-        success: false,
-        error: 'No candidates found for this state'
-      });
-    }
-    
-    res.status(200).json({
-      success: true,
-      message: `Candidates from ${state} retrieved successfully`,
-      count: filteredCandidates.length,
-      data: filteredCandidates
-    });
+    // Return raw array; allow empty array with 200 to match test expectations
+    res.status(200).json(filteredCandidates);
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -149,19 +131,8 @@ export const getCandidatesByParty = (req, res) => {
       c => c.party.toLowerCase() === party.toLowerCase()
     );
     
-    if (filteredCandidates.length === 0) {
-      return res.status(404).json({
-        success: false,
-        error: 'No candidates found for this party'
-      });
-    }
-    
-    res.status(200).json({
-      success: true,
-      message: `Candidates from ${party} retrieved successfully`,
-      count: filteredCandidates.length,
-      data: filteredCandidates
-    });
+    // Return raw array; allow empty array with 200 to match test expectations
+    res.status(200).json(filteredCandidates);
   } catch (error) {
     res.status(500).json({
       success: false,

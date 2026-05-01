@@ -132,6 +132,7 @@ export const checkRegistration = (req, res) => {
       return res.status(200).json({
         success: true,
         isRegistered: true,
+        registered: true,
         message: 'Voter is registered',
         data: {
           name: `${voter.firstName} ${voter.lastName}`,
@@ -142,11 +143,12 @@ export const checkRegistration = (req, res) => {
         }
       });
     }
-    
-    // Not found - return unregistered status
+
+    // Not found - return unregistered status (compatible with tests)
     res.status(200).json({
       success: true,
       isRegistered: false,
+      registered: false,
       message: 'Voter is not registered',
       data: null
     });

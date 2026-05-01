@@ -99,4 +99,15 @@
     "criminalRecords": false,
     "bio": "Constitutional lawyer dedicated to civil rights"
   }
+  ,
+  {
+    "id": 11,
+    "name": "Anil Mehra",
+    "party": "Independent",
+    "state": "Delhi",
+    "education": "M.A (Public Policy)",
+    "issues": ["Urban Planning", "Public Transport"],
+    "criminalRecords": false,
+    "bio": "Community organizer focused on urban issues"
+  }
 ]
