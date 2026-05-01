@@ -8,7 +8,7 @@ import './Header.css'
 
 const Header = ({ onMenuClick }) => {
   const location = useLocation()
-  const { user, setUser, language, updateLanguage } = useContext(AppContext)
+  const { user, setUser } = useContext(AppContext)
   const [showUserMenu, setShowUserMenu] = useState(false)
   const userMenuRef = useRef(null)
 
@@ -75,20 +75,6 @@ const Header = ({ onMenuClick }) => {
       </div>
 
       <div className="header-right">
-        {/* Language Selector */}
-        <div className="language-selector">
-          <select
-            value={language}
-            onChange={(e) => updateLanguage(e.target.value)}
-            aria-label="Select language"
-            className="language-select"
-          >
-            <option value="en">English</option>
-            <option value="hi">हिंदी</option>
-            <option value="mr">मराठी</option>
-          </select>
-        </div>
-
         {/* User Authentication */}
         {user ? (
           <div className="user-menu-container" ref={userMenuRef}>

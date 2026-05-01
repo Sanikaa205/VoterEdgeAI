@@ -6,15 +6,9 @@ export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
-  const [language, setLanguage] = useState('en')
 
   const updateUser = useCallback((userData) => {
     setUser(userData)
-  }, [])
-
-  const updateLanguage = useCallback((lang) => {
-    setLanguage(lang)
-    localStorage.setItem('language', lang)
   }, [])
 
   const value = {
@@ -25,9 +19,6 @@ export const AppContextProvider = ({ children }) => {
     setIsLoading,
     error,
     setError,
-    language,
-    setLanguage,
-    updateLanguage,
   }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>
