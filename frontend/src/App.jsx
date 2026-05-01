@@ -6,6 +6,7 @@ import Registration from './pages/Registration'
 import Candidates from './pages/Candidates'
 import MyBooth from './pages/MyBooth'
 import FAQ from './pages/FAQ'
+import HowToVote from './pages/HowToVote'
 import './App.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/candidates" element={<Candidates />} />
           <Route path="/booth" element={<MyBooth />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/how-to-vote" element={<HowToVote />} />
         </Route>
       </Routes>
       <AIChat />
