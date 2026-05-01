@@ -1,14 +1,22 @@
-import { describe, it, expect } from 'vitest'
-import { render, fireEvent } from '@testing-library/svelte'
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
-import { render as r, screen } from '@testing-library/react'
+import { renderToStaticMarkup } from 'react-dom/server'
+import { MemoryRouter } from 'react-router-dom'
+import { AppContext } from '../../context/AppContext.jsx'
 import RegistrationChecker from '../RegistrationChecker.jsx'
 
 describe('RegistrationChecker component', () => {
-  it('renders three decision buttons', () => {
-    r(<RegistrationChecker />)
-    expect(screen.getByRole('button', { name: /Check registration status/i })).toBeTruthy()
-    expect(screen.getByRole('button', { name: /How to vote/i })).toBeTruthy()
-    expect(screen.getByRole('button', { name: /Find polling booth/i })).toBeTruthy()
+  it('renders the three voting decision buttons', () => {
+    const markup = renderToStaticMarkup(
+      <MemoryRouter>
+        <AppContext.Provider value={{ user: null }}>
+          <RegistrationChecker />
+        </AppContext.Provider>
+      </MemoryRouter>
+    )
+
+    expect(markup).toContain('Check if I am a registered voter')
+    expect(markup).toContain('I am a verified voter')
+    expect(markup).toContain('How to become a voter')
   })
 })

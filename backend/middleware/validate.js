@@ -3,22 +3,22 @@
  * Validates and sanitizes incoming request data
  */
 
-const sanitizeString = (str) => {
+export const sanitizeString = (str) => {
   if (typeof str !== 'string') return '';
   return str.trim().replace(/[<>]/g, '').substring(0, 500);
 };
 
-const validateEmail = (email) => {
+export const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(String(email).toLowerCase());
 };
 
-const validateVoterId = (voterId) => {
+export const validateVoterId = (voterId) => {
   const voterIdRegex = /^\d{10}[A-Z]{1}\d{4}$/;
   return voterIdRegex.test(String(voterId).trim());
 };
 
-const validate = (req, res, next) => {
+export const validate = (req, res, next) => {
   const { name, email, voterId } = req.body;
 
   // Check required fields
@@ -61,5 +61,3 @@ const validate = (req, res, next) => {
 
   next();
 };
-
-module.exports = { validate, sanitizeString, validateEmail, validateVoterId };
