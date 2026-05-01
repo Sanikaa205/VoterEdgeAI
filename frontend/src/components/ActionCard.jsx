@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import './ActionCard.css'
@@ -14,20 +14,25 @@ const ActionCard = ({
 }) => {
   const navigate = useNavigate()
 
-  const handleClick = (e) => {
+  const handleClick = useCallback((e) => {
     if (onClick) {
       onClick(e)
     } else if (to) {
       navigate(to)
     }
-  }
+  }, [onClick, to, navigate])
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = useCallback((e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
       handleClick(e)
     }
-  }
+  }, [handleClick])
+
+  const handleButtonClick = useCallback((e) => {
+    e.stopPropagation()
+    handleClick(e)
+  }, [handleClick])
 
   return (
     <div
@@ -48,7 +53,7 @@ const ActionCard = ({
         type="button"
         tabIndex={-1}
         aria-hidden="true"
-        onClick={e => { e.stopPropagation(); handleClick(e); }}
+        onClick={handleButtonClick}
       >
         {buttonText}
         <ArrowRight size={16} />
@@ -57,4 +62,4 @@ const ActionCard = ({
   )
 }
 
-export default ActionCard
+export default React.memo(ActionCard)

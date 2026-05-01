@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { ChevronRight } from 'lucide-react'
 import CandidateModal from './CandidateModal'
 import './CandidateCard.css'
@@ -6,17 +6,19 @@ import './CandidateCard.css'
 const CandidateCard = ({ candidate }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const getPartyColor = (party) => {
+  // Memoize party color calculation
+  const partyColor = useMemo(() => {
     const colors = {
       'National Democratic Party': { bg: '#DDD6FE', text: '#6D28D9' },
       'Progressive Alliance': { bg: '#DBEAFE', text: '#0284C7' },
       'Economic Party': { bg: '#FECDD3', text: '#BE123C' }
     }
-    return colors[party] || { bg: '#E5E7EB', text: '#374151' }
-  }
+    return colors[candidate.party] || { bg: '#E5E7EB', text: '#374151' }
+  }, [candidate.party])
 
-  const partyColor = getPartyColor(candidate.party)
-  const criminalRecordCount = candidate.criminalRecords ? 1 : 0
+  const criminalRecordCount = useMemo(() => {
+    return candidate.criminalRecords ? 1 : 0
+  }, [candidate.criminalRecords])
 
   return (
     <>
@@ -94,4 +96,4 @@ const CandidateCard = ({ candidate }) => {
   )
 }
 
-export default CandidateCard
+export default React.memo(CandidateCard)
