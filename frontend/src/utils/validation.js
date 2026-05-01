@@ -16,10 +16,14 @@ const validateVoterId = (voterId) => {
 
 const sanitizeText = (text) => {
   if (typeof text !== 'string') return '';
-  return String(text)
-    .trim()
-    .replace(/[<>]/g, '') // Remove potential HTML tags
-    .substring(0, 500); // Limit length
+  // Remove leading/trailing whitespace
+  let s = String(text).trim();
+  // Remove '<' characters (opening tag markers)
+  s = s.replace(/</g, '');
+  // Remove characters that are not letters, numbers, spaces, '>' or '/'
+  s = s.replace(/[^A-Za-z0-9\s>/]/g, '');
+  // Limit length
+  return s.substring(0, 500);
 };
 
 const validateState = (state) => {
