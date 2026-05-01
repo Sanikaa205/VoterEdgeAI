@@ -1,0 +1,86 @@
+/* Pre-login overlay and blur for Registration page */
+
+.registration-page-root {
+  position: relative;
+}
+
+/* Background content when unauthenticated */
+.prelogin-blur {
+  filter: blur(6px) brightness(0.9);
+  opacity: 0.85;
+  pointer-events: none;
+  user-select: none;
+  transition: filter 0.32s ease, opacity 0.32s ease;
+}
+
+/* Overlay covering the page */
+.prelogin-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none; /* allow only CTA to be interactive */
+}
+
+.prelogin-card {
+  pointer-events: auto;
+  width: 100%;
+  max-width: 640px;
+  margin: 16px;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  padding: 28px;
+  transition: transform 0.28s ease, opacity 0.28s ease;
+}
+
+.prelogin-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  text-align: center;
+}
+
+.prelogin-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0F172A;
+  margin: 0;
+}
+
+.prelogin-sub {
+  font-size: 15px;
+  color: #475569;
+  margin: 0;
+}
+
+.prelogin-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg,#1A56DB 0%,#1E40AF 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.prelogin-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26,86,219,0.24);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .prelogin-card { padding: 20px; }
+  .prelogin-title { font-size: 20px; }
+  .prelogin-sub { font-size: 14px; }
+}
