@@ -11,9 +11,13 @@ const loadCandidates = () => {
     const data = fs.readFileSync(dataPath, 'utf-8');
     return JSON.parse(data);
   } catch (error) {
-    console.error('Error loading candidates:', error);
     return [];
   }
+};
+
+// Sanitize and validate query parameter
+const sanitizeParam = (param) => {
+  return String(param || '').trim().replace(/[<>]/g, '').substring(0, 100);
 };
 
 // Get all candidates (with optional filtering by state and/or party)
@@ -21,31 +25,40 @@ export const getAllCandidates = (req, res) => {
   try {
     const { state, party } = req.query;
     let candidates = loadCandidates();
-    
-    // Filter by state if provided
+
+    if (!Array.isArray(candidates)) {
+      return res.status(500).json({
+        success: false,
+        error: 'Invalid data format'
+      });
+    }
+
+    // Filter by state if provided (validated & sanitized)
     if (state) {
+      const sanitizedState = sanitizeParam(state);
       candidates = candidates.filter(
-        c => c.state.toLowerCase() === state.toLowerCase()
+        c => c.state && c.state.toLowerCase() === sanitizedState.toLowerCase()
       );
     }
-    
-    // Filter by party if provided
+
+    // Filter by party if provided (validated & sanitized)
     if (party) {
+      const sanitizedParty = sanitizeParam(party);
       candidates = candidates.filter(
-        c => c.party.toLowerCase() === party.toLowerCase()
+        c => c.party && c.party.toLowerCase() === sanitizedParty.toLowerCase()
       );
     }
-    
+
     res.status(200).json({
       success: true,
       message: 'Candidates retrieved successfully',
       count: candidates.length,
-      data: candidates
+      data: candidates || []
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error.message
+      error: 'Failed to retrieve candidates'
     });
   }
 };
@@ -54,17 +67,34 @@ export const getAllCandidates = (req, res) => {
 export const getCandidateById = (req, res) => {
   try {
     const { id } = req.params;
+    
+    // Validate ID is a number
+    const candidateId = parseInt(id, 10);
+    if (isNaN(candidateId)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid candidate ID'
+      });
+    }
+
     const candidates = loadCandidates();
-    
-    const candidate = candidates.find(c => c.id === parseInt(id));
-    
+
+    if (!Array.isArray(candidates)) {
+      return res.status(500).json({
+        success: false,
+        error: 'Invalid data format'
+      });
+    }
+
+    const candidate = candidates.find(c => c.id === candidateId);
+
     if (!candidate) {
       return res.status(404).json({
         success: false,
         error: 'Candidate not found'
       });
     }
-    
+
     res.status(200).json({
       success: true,
       message: 'Candidate retrieved successfully',
@@ -73,7 +103,7 @@ export const getCandidateById = (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error.message
+      error: 'Failed to retrieve candidate'
     });
   }
 };

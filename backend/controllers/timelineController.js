@@ -11,9 +11,13 @@ const loadTimeline = () => {
     const data = fs.readFileSync(dataPath, 'utf-8');
     return JSON.parse(data);
   } catch (error) {
-    console.error('Error loading timeline:', error);
     return { states: [] };
   }
+};
+
+// Sanitize and validate state parameter
+const sanitizeState = (state) => {
+  return String(state || '').trim().replace(/[<>]/g, '').substring(0, 100);
 };
 
 // Get timeline for all states
@@ -37,28 +41,44 @@ export const getTimelineAll = (req, res) => {
 export const getTimelineByState = (req, res) => {
   try {
     const { state } = req.params;
+    
+    if (!state) {
+      return res.status(400).json({
+        success: false,
+        error: 'State parameter is required'
+      });
+    }
+
+    const sanitizedState = sanitizeState(state);
     const timelineData = loadTimeline();
-    
+
+    if (!Array.isArray(timelineData.states)) {
+      return res.status(500).json({
+        success: false,
+        error: 'Invalid data format'
+      });
+    }
+
     const stateTimeline = timelineData.states.find(
-      s => s.state.toLowerCase() === state.toLowerCase()
+      s => s.state && s.state.toLowerCase() === sanitizedState.toLowerCase()
     );
-    
+
     if (!stateTimeline) {
       return res.status(404).json({
         success: false,
-        error: `No timeline found for state: ${state}`
+        error: `No timeline found for state: ${sanitizedState}`
       });
     }
-    
+
     res.status(200).json({
       success: true,
-      message: `Timeline for ${state} retrieved successfully`,
+      message: `Timeline for ${sanitizedState} retrieved successfully`,
       data: stateTimeline
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      error: error.message
+      error: 'Failed to retrieve timeline'
     });
   }
 }
