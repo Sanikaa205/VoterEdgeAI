@@ -25,7 +25,7 @@ const Home = () => {
       try {
         setChecklistItems(JSON.parse(savedChecklist))
       } catch (error) {
-        console.error('Error loading checklist:', error)
+        // Silently handle checklist load errors
       }
     }
   }, [])

@@ -20,7 +20,7 @@ const Registration = () => {
         uid: result.user.uid,
       })
     } catch (err) {
-      console.error('Sign-in error:', err)
+      // Sign-in error handled
     }
   }
 

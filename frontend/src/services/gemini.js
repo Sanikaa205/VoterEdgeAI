@@ -3,7 +3,7 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 export const initializeGemini = async () => {
   // Initialize Gemini AI
   if (!GEMINI_API_KEY) {
-    console.warn('Gemini API key not found');
+    // Gemini API key not configured
     return null;
   }
   return GEMINI_API_KEY;
@@ -27,7 +27,7 @@ export const geminiChat = async (message) => {
     if (!response.ok) throw new Error('Gemini API Error');
     return response.json();
   } catch (error) {
-    console.error('Gemini Error:', error);
+    // Gemini API error
     throw error;
   }
 };

@@ -70,7 +70,6 @@ const BoothLocator = () => {
         }
       }
     } catch (err) {
-      console.error('Error fetching booths:', err)
       setError(err.message || 'Failed to fetch booths. Please try again.')
     } finally {
       setIsLoading(false)

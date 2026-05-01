@@ -34,7 +34,7 @@ const Header = ({ onMenuClick }) => {
         uid: result.user.uid,
       })
     } catch (error) {
-      console.error('Sign-in error:', error)
+      // Sign-in error handled silently
     }
   }
 
@@ -45,7 +45,7 @@ const Header = ({ onMenuClick }) => {
       setUser(null)
       setShowUserMenu(false)
     } catch (error) {
-      console.error('Sign-out error:', error)
+      // Sign-out error handled silently
     }
   }
 

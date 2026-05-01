@@ -26,7 +26,7 @@ const Candidates = () => {
         uid: result.user.uid,
       })
     } catch (err) {
-      console.error('Sign-in error:', err)
+      // Sign-in error handled
     }
   }
 
@@ -70,7 +70,6 @@ const Candidates = () => {
         setCandidates([])
       }
     } catch (err) {
-      console.error('Error fetching candidates:', err)
       setError(err.message || 'Failed to fetch candidates. Please try again.')
       setCandidates([])
     } finally {

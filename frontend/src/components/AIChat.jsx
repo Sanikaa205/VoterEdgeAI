@@ -162,7 +162,6 @@ const AIChat = () => {
       announceMessage(`VoterEdge AI: ${replyText}`)
 
     } catch (err) {
-      console.error('Chat error:', err)
       const fallbackMessage = "I'm sorry, I couldn't process your request right now. Please try again in a moment."
       setError(err.message || 'Unable to reach assistant.')
       setMessages(prev => [

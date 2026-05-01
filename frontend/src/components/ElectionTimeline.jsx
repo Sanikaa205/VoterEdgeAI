@@ -41,7 +41,6 @@ const ElectionTimeline = ({ state, user }) => {
         setError(data.error || 'Failed to load timeline')
       }
     } catch (err) {
-      console.error('Error fetching timeline:', err)
       setError(err.message || 'Failed to fetch timeline')
     } finally {
       setLoading(false)
