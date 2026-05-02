@@ -1,7 +1,7 @@
 ## Production-ready single-container Dockerfile
 ## Builds the frontend, installs backend deps, and serves the SPA via Express
 
-FROM node:18-alpine AS build
+FROM node:20-alpine AS build
 WORKDIR /usr/src/app
 
 # Copy package files for frontend and backend
@@ -15,7 +15,7 @@ COPY frontend/ .
 RUN npm run build
 
 # Build final image with only production deps
-FROM node:18-alpine AS runtime
+FROM node:20-alpine AS runtime
 WORKDIR /usr/src/app
 
 # Copy backend sources
