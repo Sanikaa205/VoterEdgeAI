@@ -144,6 +144,13 @@ app.get('/api/health', (req, res) => {
   });
 });
 
+// Public client config needed at runtime
+app.get('/api/public-config', (req, res) => {
+  res.status(200).json({
+    googleMapsKey: process.env.VITE_GOOGLE_MAPS_KEY || process.env.GOOGLE_MAPS_SERVER_KEY || ''
+  });
+});
+
 // API Routes
 app.use('/api/registration', registrationRoutes);
 app.use('/api/candidates', candidateRoutes);

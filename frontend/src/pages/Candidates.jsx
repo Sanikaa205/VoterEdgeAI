@@ -46,11 +46,18 @@ const Candidates = () => {
       }
 
       const data = await response.json()
+      const candidateList = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.data)
+          ? data.data
+          : []
 
-      if (data.success) {
-        setCandidates(data.data || [])
-      } else {
+      if (candidateList.length > 0 || Array.isArray(data)) {
+        setCandidates(candidateList)
+      } else if (data?.success === false) {
         setError(data.error || 'Failed to fetch candidates')
+        setCandidates([])
+      } else {
         setCandidates([])
       }
     } catch (err) {

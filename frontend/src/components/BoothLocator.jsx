@@ -19,11 +19,30 @@ const BoothLocator = () => {
   const [error, setError] = useState('')
   const [address, setAddress] = useState('')
   const [mapError, setMapError] = useState(false)
+  const [runtimeMapsKey, setRuntimeMapsKey] = useState('')
   const mapRef = useRef(null)
 
   const API_URL = import.meta.env.VITE_API_URL || ''
-  const GOOGLE_MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY || import.meta.env.GOOGLE_MAPS_SERVER_KEY
+  const GOOGLE_MAPS_KEY = runtimeMapsKey || import.meta.env.VITE_GOOGLE_MAPS_KEY || ''
   const hasValidMapsKey = GOOGLE_MAPS_KEY && !GOOGLE_MAPS_KEY.startsWith('your_')
+
+  useEffect(() => {
+    const loadRuntimeConfig = async () => {
+      try {
+        const response = await fetch(`${API_URL}/api/public-config`)
+        if (!response.ok) return
+
+        const config = await response.json()
+        if (config?.googleMapsKey) {
+          setRuntimeMapsKey(config.googleMapsKey)
+        }
+      } catch {
+        // Keep using build-time env if runtime config is unavailable
+      }
+    }
+
+    loadRuntimeConfig()
+  }, [API_URL])
 
   const mapContainerStyle = {
     width: '100%',
