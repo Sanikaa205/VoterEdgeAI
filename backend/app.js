@@ -51,7 +51,9 @@ app.use(helmet({
         "https://maps.googleapis.com",
         "https://firestore.googleapis.com",
         "https://*.firebaseio.com",
-        "https://*.firebase.googleapis.com"
+        "https://*.firebase.googleapis.com",
+        "https://*.firebaseapp.com",
+        "https://*.firebase.com"
       ],
       imgSrc: [
         "'self'",
@@ -63,7 +65,10 @@ app.use(helmet({
         "'self'",
         "https://maps.google.com",
         "https://*.google.com",
-        "https://*.googleapis.com"
+        "https://*.googleapis.com",
+        "https://*.firebaseapp.com",
+        "https://*.firebase.com",
+        "https://firebase.google.com"
       ]
     }
   }
