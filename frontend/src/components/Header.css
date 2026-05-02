@@ -270,3 +270,84 @@
     font-size: 12px;
   }
 }
+
+/* Email Sign In Form */
+.email-signin-form {
+  position: relative;
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  min-width: 280px;
+  z-index: 1001;
+  animation: slideDown 0.2s ease;
+}
+
+.close-form-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6B7280;
+  transition: color 0.2s ease;
+}
+
+.close-form-btn:hover {
+  color: #111928;
+}
+
+.email-signin-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-input {
+  padding: 10px 12px;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #1A56DB;
+  box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.1);
+}
+
+.form-submit-btn {
+  padding: 10px 12px;
+  background: linear-gradient(135deg, #1A56DB 0%, #1E40AF 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  box-shadow: 0 4px 12px rgba(26, 86, 219, 0.3);
+}
+
+.google-signin-fallback {
+  padding: 10px 12px;
+  background: white;
+  color: #374151;
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.google-signin-fallback:hover {
+  background-color: #F3F4F6;
+}

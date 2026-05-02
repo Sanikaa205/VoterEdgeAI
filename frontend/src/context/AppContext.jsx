@@ -1,4 +1,4 @@
-import React, { createContext, useState, useCallback } from 'react'
+import React, { createContext, useState, useEffect, useCallback } from 'react'
 
 export const AppContext = createContext()
 
@@ -7,14 +7,50 @@ export const AppContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
+  // Initialize from localStorage on mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem('voteredge_user')
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser))
+      } catch (e) {
+        localStorage.removeItem('voteredge_user')
+      }
+    }
+  }, [])
+
   const updateUser = useCallback((userData) => {
     setUser(userData)
+    if (userData) {
+      localStorage.setItem('voteredge_user', JSON.stringify(userData))
+    } else {
+      localStorage.removeItem('voteredge_user')
+    }
+  }, [])
+
+  const signInWithEmail = useCallback((email, name = '') => {
+    const userData = {
+      uid: Math.random().toString(36).substr(2, 9),
+      email,
+      displayName: name || email.split('@')[0],
+      photoURL: null,
+      createdAt: new Date().toISOString()
+    }
+    updateUser(userData)
+    return userData
+  }, [updateUser])
+
+  const signOut = useCallback(() => {
+    setUser(null)
+    localStorage.removeItem('voteredge_user')
   }, [])
 
   const value = {
     user,
     setUser,
     updateUser,
+    signInWithEmail,
+    signOut,
     isLoading,
     setIsLoading,
     error,
