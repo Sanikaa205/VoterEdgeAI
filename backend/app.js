@@ -16,8 +16,51 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Security middleware
-app.use(helmet());
+// Security middleware with custom CSP for Google APIs
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: [
+        "'self'",
+        "https://apis.google.com",
+        "https://maps.googleapis.com",
+        "https://cdn.jsdelivr.net",
+        "https://www.gstatic.com"
+      ],
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "https://fonts.googleapis.com",
+        "https://maps.googleapis.com"
+      ],
+      fontSrc: [
+        "'self'",
+        "https://fonts.gstatic.com"
+      ],
+      connectSrc: [
+        "'self'",
+        "https://apis.google.com",
+        "https://generativelanguage.googleapis.com",
+        "https://www.googleapis.com",
+        "https://maps.googleapis.com",
+        "https://firestore.googleapis.com",
+        "https://*.firebaseio.com",
+        "https://*.firebase.googleapis.com"
+      ],
+      imgSrc: [
+        "'self'",
+        "https:",
+        "data:"
+      ],
+      mediaSrc: ["'self'"],
+      frameSrc: [
+        "'self'",
+        "https://maps.google.com"
+      ]
+    }
+  }
+}));
 
 // CORS middleware
 const defaultAllowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
