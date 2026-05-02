@@ -23,7 +23,9 @@ app.use(helmet({
       defaultSrc: ["'self'"],
       scriptSrc: [
         "'self'",
+        "'unsafe-inline'",
         "https://apis.google.com",
+        "https://*.googleapis.com",
         "https://maps.googleapis.com",
         "https://cdn.jsdelivr.net",
         "https://www.gstatic.com"
@@ -32,15 +34,18 @@ app.use(helmet({
         "'self'",
         "'unsafe-inline'",
         "https://fonts.googleapis.com",
-        "https://maps.googleapis.com"
+        "https://maps.googleapis.com",
+        "https://*.googleapis.com"
       ],
       fontSrc: [
         "'self'",
-        "https://fonts.gstatic.com"
+        "https://fonts.gstatic.com",
+        "https://*.gstatic.com"
       ],
       connectSrc: [
         "'self'",
         "https://apis.google.com",
+        "https://*.googleapis.com",
         "https://generativelanguage.googleapis.com",
         "https://www.googleapis.com",
         "https://maps.googleapis.com",
@@ -56,7 +61,9 @@ app.use(helmet({
       mediaSrc: ["'self'"],
       frameSrc: [
         "'self'",
-        "https://maps.google.com"
+        "https://maps.google.com",
+        "https://*.google.com",
+        "https://*.googleapis.com"
       ]
     }
   }
