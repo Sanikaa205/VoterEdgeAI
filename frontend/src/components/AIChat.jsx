@@ -13,7 +13,7 @@ const AIChat = () => {
   const inputRef = useRef(null)
   const sendDebounceRef = useRef(null)
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001'
+  const API_URL = import.meta.env.VITE_API_URL || ''
 
   // Auto-scroll to newest message
   const scrollToBottom = () => {

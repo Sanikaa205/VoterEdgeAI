@@ -90,7 +90,8 @@ See [Frontend README](./frontend/README.md) for frontend setup and development g
 
 ### Frontend (.env.local)
 - `VITE_API_URL` - Backend API URL
-- `VITE_GEMINI_API_KEY` - Gemini AI API key
+- `VITE_FIREBASE_*` - Firebase public client configuration
+- `VITE_GOOGLE_MAPS_KEY` - Google Maps browser key
 
 ### Backend (.env)
 - `PORT` - Server port
@@ -98,6 +99,8 @@ See [Frontend README](./frontend/README.md) for frontend setup and development g
 - `DB_NAME` - Database name
 - `GEMINI_API_KEY` - Gemini AI API key
 - `JWT_SECRET` - JWT secret key
+
+Note: Gemini is used server-side via backend `/api/chat`; do not expose Gemini secrets as `VITE_*` frontend variables.
 
 ## Contributing
 

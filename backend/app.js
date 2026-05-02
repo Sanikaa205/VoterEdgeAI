@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // Import routes
 import registrationRoutes from './routes/registration.js';
@@ -11,31 +13,56 @@ import timelineRoutes from './routes/timeline.js';
 import chatRoutes from './routes/chat.js';
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Security middleware
 app.use(helmet());
 
 // CORS middleware
-const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const defaultAllowedOrigins = ['http://localhost:5173', 'http://localhost:5174'];
+const configuredOrigins = String(process.env.CORS_ORIGIN || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    // Allow non-browser clients (e.g. Postman) with no Origin header.
-    if (!origin) return callback(null, true);
+const allowedOrigins = new Set([...defaultAllowedOrigins, ...configuredOrigins]);
 
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+const corsOptionsDelegate = (req, callback) => {
+  const requestOrigin = req.header('Origin');
 
-    return callback(new Error('Not allowed by CORS'));
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  // Allow non-browser clients (e.g. Postman) with no Origin header.
+  if (!requestOrigin) {
+    return callback(null, {
+      origin: true,
+      credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization']
+    });
+  }
+
+  const forwardedHost = req.header('x-forwarded-host');
+  const requestHost = forwardedHost || req.header('host');
+
+  let isSameOrigin = false;
+  try {
+    isSameOrigin = requestHost ? new URL(requestOrigin).host === requestHost : false;
+  } catch {
+    isSameOrigin = false;
+  }
+
+  const isAllowed = isSameOrigin || allowedOrigins.has(requestOrigin);
+
+  return callback(null, {
+    origin: isAllowed,
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  });
 };
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors(corsOptionsDelegate));
+app.options('*', cors(corsOptionsDelegate));
 
 // Body parser middleware
 app.use(express.json({ limit: '10mb' }));
@@ -66,6 +93,17 @@ app.use('/api/candidates', candidateRoutes);
 app.use('/api/booth', boothRoutes);
 app.use('/api/timeline', timelineRoutes);
 app.use('/api/chat', chatRoutes);
+
+// Serve frontend build (static files)
+const frontendDist = path.join(__dirname, '..', 'frontend', 'dist');
+
+app.use(express.static(frontendDist));
+
+// Fallback: serve index.html for non-API routes (SPA)
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) return next();
+  return res.sendFile(path.join(frontendDist, 'index.html'));
+});
 
 // 404 handler
 app.use((req, res) => {
