@@ -22,8 +22,8 @@ const BoothLocator = () => {
   const mapRef = useRef(null)
 
   const API_URL = import.meta.env.VITE_API_URL || ''
-  const GOOGLE_MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY
-  const hasValidMapsKey = GOOGLE_MAPS_KEY && GOOGLE_MAPS_KEY !== 'your_google_maps_api_key_here'
+  const GOOGLE_MAPS_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY || import.meta.env.GOOGLE_MAPS_SERVER_KEY
+  const hasValidMapsKey = GOOGLE_MAPS_KEY && !GOOGLE_MAPS_KEY.startsWith('your_')
 
   const mapContainerStyle = {
     width: '100%',

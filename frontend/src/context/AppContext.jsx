@@ -6,6 +6,7 @@ export const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [isSignInOpen, setIsSignInOpen] = useState(false)
 
   // Initialize from localStorage on mount
   useEffect(() => {
@@ -40,6 +41,14 @@ export const AppContextProvider = ({ children }) => {
     return userData
   }, [updateUser])
 
+  const openSignIn = useCallback(() => {
+    setIsSignInOpen(true)
+  }, [])
+
+  const closeSignIn = useCallback(() => {
+    setIsSignInOpen(false)
+  }, [])
+
   const signOut = useCallback(() => {
     setUser(null)
     localStorage.removeItem('voteredge_user')
@@ -50,6 +59,9 @@ export const AppContextProvider = ({ children }) => {
     setUser,
     updateUser,
     signInWithEmail,
+    openSignIn,
+    closeSignIn,
+    isSignInOpen,
     signOut,
     isLoading,
     setIsLoading,

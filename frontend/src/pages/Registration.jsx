@@ -2,25 +2,9 @@ import React, { useContext } from 'react'
 import RegistrationChecker from '../components/RegistrationChecker'
 import ProtectedContent from '../components/ProtectedContent'
 import { AppContext } from '../context/AppContext'
-import { signInWithPopup } from 'firebase/auth'
-import { auth, provider } from '../config/firebase'
 
 const Registration = () => {
-  const { setUser } = useContext(AppContext)
-
-  const handleGoogleSignIn = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider)
-      setUser({
-        name: result.user.displayName,
-        email: result.user.email,
-        photoURL: result.user.photoURL,
-        uid: result.user.uid,
-      })
-    } catch (err) {
-      // Sign-in error handled
-    }
-  }
+  const { openSignIn } = useContext(AppContext)
 
   return (
     <div className="page-section">
@@ -29,7 +13,7 @@ const Registration = () => {
         <p>Check your registration status and learn how to register to vote</p>
       </div>
 
-      <ProtectedContent onSignIn={handleGoogleSignIn}>
+      <ProtectedContent onSignIn={openSignIn}>
         {/* Registration Checker */}
         <section style={{ marginBottom: '32px' }}>
           <RegistrationChecker />

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Sidebar from './Sidebar'
 import Header from './Header'
+import SignInModal from './SignInModal'
 import './Layout.css'
 
 const Layout = () => {
@@ -18,6 +19,7 @@ const Layout = () => {
       <main className="main-content">
         <Outlet />
       </main>
+      <SignInModal />
     </div>
   )
 }

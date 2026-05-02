@@ -2,12 +2,10 @@ import React, { useState, useEffect, useContext } from 'react'
 import CandidateCard from '../components/CandidateCard'
 import ProtectedContent from '../components/ProtectedContent'
 import { AppContext } from '../context/AppContext'
-import { signInWithPopup } from 'firebase/auth'
-import { auth, provider } from '../config/firebase'
 import './Candidates.css'
 
 const Candidates = () => {
-  const { setUser } = useContext(AppContext)
+  const { openSignIn } = useContext(AppContext)
   const [candidates, setCandidates] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -15,20 +13,6 @@ const Candidates = () => {
   const [selectedParty, setSelectedParty] = useState('All')
 
   const API_URL = import.meta.env.VITE_API_URL || ''
-
-  const handleGoogleSignIn = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider)
-      setUser({
-        name: result.user.displayName,
-        email: result.user.email,
-        photoURL: result.user.photoURL,
-        uid: result.user.uid,
-      })
-    } catch (err) {
-      // Sign-in error handled
-    }
-  }
 
   const states = ['Maharashtra', 'Gujarat', 'Karnataka']
   const parties = ['All', 'National Democratic Party', 'Progressive Alliance', 'Economic Party']
@@ -103,7 +87,7 @@ const Candidates = () => {
         <p>Learn about candidates contesting in your state</p>
       </div>
 
-      <ProtectedContent onSignIn={handleGoogleSignIn}>
+      <ProtectedContent onSignIn={openSignIn}>
         {/* Filter Section */}
         <div className="candidates-filters">
           {/* State Filter */}

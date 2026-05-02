@@ -52,6 +52,7 @@ app.use(helmet({
         "https://firestore.googleapis.com",
         "https://*.firebaseio.com",
         "https://*.firebase.googleapis.com",
+        "https://voteredgeai.firebaseapp.com",
         "https://*.firebaseapp.com",
         "https://*.firebase.com"
       ],
@@ -60,12 +61,13 @@ app.use(helmet({
         "https:",
         "data:"
       ],
-      mediaSrc: ["'self'"],
+      mediaSrc: ["'self'", "data:"],
       frameSrc: [
         "'self'",
         "https://maps.google.com",
         "https://*.google.com",
         "https://*.googleapis.com",
+        "https://voteredgeai.firebaseapp.com",
         "https://*.firebaseapp.com",
         "https://*.firebase.com",
         "https://firebase.google.com"
